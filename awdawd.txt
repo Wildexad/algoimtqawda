@@ -1,0 +1,92 @@
+#include <iostream>
+using namespace std;
+struct Node {
+    int value;
+    int count;
+    Node* left;
+    Node* right;
+};
+struct Node* addNode(int input, Node* top) {
+    if (top ==nullptr){
+        top=new Node;
+        top->value=input;
+        top->count=1;
+        top->left=nullptr;
+        top->right=nullptr;
+    }
+    else if (input==top->value{
+        top->count+=1;
+    }
+    else if (input<top->value{
+        top->left=addNode(input,top->left);
+    }
+    else {
+        top->right=addNode(input,top->right);
+    }
+    return top;
+}
+void printTree(char method, Node* top){
+    switch(method){
+        case "f":
+            if (top!=nullptr){
+                cout<<top->value<<" ";
+                printTree(method,top->left);
+                printTree(method,top->right);
+            }
+            break;
+        case "r":
+            if (top!=nullptr){
+                printTree(method,top->left);
+                printTree(method,top->right);
+                cout<<top->value<<" ";
+            }
+            break;
+        case "s":
+            if (top!=nullptr){
+                printTree(method,top->left);
+                cout<<top->value<<" ";
+                printTree(method,top->right);
+            }
+            break;
+        default:
+            cout<<"incorrect symbol"<<endl;
+            break;
+        }
+    }
+int depthTree(int counter, Node* top){
+    if(top!=nullptr){
+        if (top->left==nullptr&& top->right==nullptr){
+            return counter;
+        }
+        else if (top->left==nullptr){
+            return depthTree(counter + 1,top->right);
+        }
+        else if (top->right==nullptr){
+            return depthTree(counter + 1,top->left);
+        }
+        else{
+            return max(depthTree(counter + 1,tor->left),depthTree(counter + 1,top->right));
+        }
+    }
+        else return 0;
+}
+bool searchNode(int input, Node* top) {
+    if (top!=nullptr){
+        if (input<top->value){
+            return searchNode(input,top->left);
+        }
+        else if (input>top->value){
+            return searchNode(input,top->right)
+        }
+        else return true;
+    }
+    else return false;
+}
+void use(){
+    cout<<"available actions"<<endl;
+    cout<<"1.add tree elements"<<endl;
+    cout<<"2.print tree"<<endl;
+    cout<<"3.finding depth tree"<<endl;
+    cout<<"4.searching of elements in tree"<<endl;
+    cout<<"5.end of programm"<<endl;
+}
